@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>django-aai-eduhr</title>
+    </head>
+    <body>
+        {% if request.user.is_authenticated %}
+            <p>You have been successfully authenticated.</p>
+        {% else %}
+            <p>You have not been authenticated.</p>
+        {% endif %}
+
+        <ul>
+            <li><a href="{% url 'saml2_login' %}">Login</a></li>
+            <li><a href="{% url 'saml2_logout' %}">Logout</a></li>
+            <li><a href="{% url 'saml2_metadata' %}">Metadata</a></li>
+        </ul>
+    </body>
+</html>

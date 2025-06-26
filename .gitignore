@@ -1,0 +1,7 @@
+.env
+.idea
+.venv
+__pycache__
+logs
+docs/_build
+db.sqlite3

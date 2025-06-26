@@ -1,0 +1,12 @@
+django>=4.2,<5.0
+djangosaml2>=1.9.3,<1.10.0
+pysaml2>=7.5.0,<7.6.0
+django-environ==0.11.2
+python-dateutil>=2.9.0,<2.10.0
+sphinx>=8.2.3,<8.3.0
+sphinx_rtd_theme>=3.0.2,<3.1.0
+myst-parser>=4.0.1,<4.1.0
+setuptools>=40.8.0,<40.9.0
+build>=1.2.2,<1.3.0
+flake8>=7.3.0,<7.4.0
+isort>=6.0.1,<6.1.0
