@@ -5,7 +5,7 @@ build-backend = 'setuptools.build_meta'
 [project]
 name = "django-aai-eduhr"
 description = "A Django application for integrating with the AAI@EduHr Single Sign-On (SSO) Service."
-version = "1.0.0"
+version = "1.0.1"
 readme = "README.md"
 authors = [
     {name = "Dino Aljević", email = "dino.aljevic@uniri.hr"},

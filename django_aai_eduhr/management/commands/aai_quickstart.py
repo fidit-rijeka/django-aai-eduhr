@@ -85,7 +85,7 @@ class Command(BaseCommand):
                 self.stdout.write(_('\nEnable SAML debug mode? This is useful for retrieving logs during development.'))
                 saml_debug = self._boolean_input('y')
 
-                xmlsec1 = shutil.which('xmlsec12')
+                xmlsec1 = shutil.which('xmlsec1')
                 if not xmlsec1:
                     self.stdout.write(
                         self.style.ERROR(
@@ -132,7 +132,12 @@ class Command(BaseCommand):
                     _('\nDoes the application sign logout requests? This is recommended in production, but '
                       '"Validate Logout Requests" needs to be enabled in the resource registry.')
                 )
-                sign_logout = self._boolean_input('n')
+                sign_logout_req = self._boolean_input('n')
+
+                self.stdout.write(
+                    _('\nDoes the application sign logout responses? This is recommended in production.')
+                )
+                sign_logout_res = self._boolean_input('n')
 
                 self.stdout.write(
                     _('\nDoes the application force authentication? This will ignore previously established SSO '
@@ -146,7 +151,7 @@ class Command(BaseCommand):
                 )
                 allow_unsolicited = self._boolean_input('n')
 
-                security = any([signed_assertions, signed_responses, sign_authn, sign_logout])
+                security = any([signed_assertions, signed_responses, sign_authn, sign_logout_req])
                 if security:
                     self.stdout.write(
                         _('\nEnter the path to the PEM formatted file that contains the private key of the service. '
@@ -196,8 +201,8 @@ class Command(BaseCommand):
                             'want_assertions_signed': signed_assertions,
                             'want_response_signed': signed_responses,
 
-                            'logout_requests_signed': sign_logout,
-                            'logout_responses_signed': sign_logout,
+                            'logout_requests_signed': sign_logout_req,
+                            'logout_responses_signed': sign_logout_res,
                             'authn_requests_signed': sign_authn,
 
                             'force_authn': force_authn,

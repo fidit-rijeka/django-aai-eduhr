@@ -10,7 +10,7 @@ project.*
 
 ## Overview
 
-Django AAI@EduHr version 1.0.0.
+Django AAI@EduHr version 1.0.1.
 
 `django-aai-eduhr` is built on top of [djangosaml2](https://djangosaml2.readthedocs.io/) and 
 [pysaml2](https://pysaml2.readthedocs.io/en/latest/) and shares much of its configuration with these libraries.
