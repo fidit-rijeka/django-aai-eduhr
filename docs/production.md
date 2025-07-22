@@ -22,13 +22,16 @@ development configuration.
 ### Signing
 
 Depending on your configuration, you should enable *Sign Assertion*, *Sign Response* and *Sign Logout* in the 
-AAI@EduHr resource registry. You should configure your certificate/public key in the *SP Signing Certificate* field 
-without the `-----BEGIN/END CERTIFICATE-----` lines. This will enable signing and validation of exchanged messages by 
-the IdP.
+AAI@EduHr resource registry. You should also enable signature validation for authentication and logout requests, i.e. 
+*Validate Authn Request* and *Validate Logout Request*.
 
-On the application side, you should enable `want_assertions_signed` and `want_responses_signed`. If you want your 
-application to sign logout and/or authentication requests, you should enable `authn_requests_signed` and/or 
-`logout_requests_signed` as well.
+Configure your certificate/public key in the *SP Signing Certificate* field  without the 
+`-----BEGIN/END CERTIFICATE-----` lines. This will enable signing and validation of exchanged messages by the IdP.
+
+On the application side, you should enable `want_assertions_signed` and `want_responses_signed`. If you have enabled 
+validation of authentication and logout requests, you can enable signing by setting `authn_requests_signed` and 
+`logout_requests_signed`, respectively. For stricter security, consider signing logout responses as well 
+by enabling `logout_responses_signed`.
 
 ```py
 SAML_CONFIG = {
@@ -41,6 +44,7 @@ SAML_CONFIG = {
             
             'authn_requests_signed': True,  # sign authentication requests
             'logout_requests_signed': True,  # sign logout requests
+            'logout_responses_signed': True,  # sign logout responses
         },
     },
 }
